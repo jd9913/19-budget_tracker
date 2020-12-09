@@ -8,7 +8,7 @@ let CACHE_ERROR;
 
 const FILES_TO_CACHE=[
     "./index.html",
-    "./dist/main.bundle.js",
+    "./main.bundle.js",
     "./css/styles.css"
     
 ]
