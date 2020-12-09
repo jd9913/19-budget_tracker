@@ -4,6 +4,7 @@
 const APP_PREFIX="budget-";
 const VERSION="versopm_01";
 const CACHE_NAME=APP_PREFIX+VERSION;
+let CACHE_ERROR;
 
 const FILES_TO_CACHE=[
     "./index.html",
@@ -45,16 +46,30 @@ self.addEventListener('activate',function(e){
 self.addEventListener('fetch', function(e){
     console.log('fetch request :'+e.request.url)
     e.respondWith(
-        caches.match(e.request).then(function(request){
-            if(request){
+        caches.match(e.request)
+        .then(function(response){
+            if(response){
                 console.log('responding with cache : '+ e/request.url)
-                return request
+                return response; //if valid response is found in cache return it
             }else{
                 console.log('file is not cached, fetching: '+e.request.url)
-                return fetch(e.request)
+                return fetch(e.request)  //fetch from internet
+                .then(function(res){
+                    return caches.open(CACHE_NAME)
+                    .then(function(cache){
+                        cache.put(e.request.url, res.clone()); //save response for the future
+                        return res; //return the fetched data
+                    })
+                })
+                .catch(function(err){   //fallback--plan B mechanism--source stack overflow: #47172018
+                    return caches.open(CACHE_ERROR)
+                    .then(function(cache){
+                        return cache.match('/offline.html');
+                    });
+                });
             }
             // You can omit if/else for console.log & put one line below like this too.
 // return request || fetch(e.request)
         })
-    )
-})
+    );
+});
