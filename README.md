@@ -44,6 +44,10 @@ Description
 >><br>
 >>click [here](https://choosealicense.com/licenses/) to read about these licenses.
 
+[Screenshot]
+========
+![screenshot](https://github.com/jd9913/19-budget_tracker/blob/main/budget-screenshot.jpg)
+
 Footer
 --
 
