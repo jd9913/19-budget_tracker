@@ -36,7 +36,7 @@ Description
 ==
 >:email:Email: jd9913@gmail.com<br>
 >GitHub Username: jd9913<br>
->:link: Repository Links: Github: https://github.com/jd9913/19-budget_tracker <br> Heroku live deployment: https://dashboard.heroku.com/apps/budget-tracker-19-jd9913<br>
+>:link: Repository Links: Github: https://github.com/jd9913/19-budget_tracker <br> Heroku live deployment: https://budget-tracker-19-jd9913.herokuapp.com/<br>
 
 [Licenses](#license)
 ==
